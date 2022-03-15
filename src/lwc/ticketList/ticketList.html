@@ -1,0 +1,59 @@
+<template>
+    <lightning-card title='Your Tickets'>
+        <template if:true={tickets.data}>
+            <ul class='slds-p-left_medium'>
+                <template for:each={tickets.data} for:item='ticket'>
+                    <li key={ticket.Id} class='slds-p-bottom_medium'>
+                        <b>Destination: </b> {ticket.Flight_Info_Id__r.Destination__c}<br>
+                        <b>Departure: </b> {ticket.Flight_Info_Id__r.Departure__c}<br>
+                        <b>Flight start time: </b> <lightning-formatted-date-time  value= {ticket.Flight_Info_Id__r.Date_time_of_Flight__c}></lightning-formatted-date-time><br>
+                        <b>Flight finish time: </b> <lightning-formatted-date-time  value= {ticket.Flight_Info_Id__r.Finish_flight_time__c}></lightning-formatted-date-time><br>
+                        <b>Status: </b> {ticket.Status__c}<br>
+                        <lightning-button label='Return' variant="brand" onclick={showModal}
+                                          data-id={ticket.Id}></lightning-button>
+                        <template if:true={openModal}>
+                        <div class="slds-modal slds-fade-in-open slds-backdrop">
+                            <div class="slds-modal__container">
+                                <!------HEADER Section-->
+                                <div class="slds-modal__header">
+                                    <lightning-button-icon icon-name="utility:close" alternative-text="Close this window"
+                                                           size="large"
+                                                           variant="bare-inverse" onclick={closeModal}
+                                                           class="slds-modal__close">
+                                    </lightning-button-icon>
+                                    <h2>Are you sure you want to return this ticket?</h2>
+                                </div>
+                                <!------Body Section-->
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <center>
+
+                        <b>Name: </b> {ticket.Name}<br>
+                        <b>Price: </b> {ticket.Price__c}$<br>
+                </center>
+                </div>
+                <div class="slds-modal__footer">
+                            <lightning-button
+                                    label="No"
+                                    variant="neutral"
+                                    style="margin:5px"
+                                    onclick={closeModal}
+                                    data-id={ticket.Id}>
+                            </lightning-button>
+                            <lightning-button
+                                    label="Yes"
+                                    variant="brand"
+                                    style="margin:5px"
+                                    onclick={ticketReturn}
+                                    data-id={ticket.Id}>
+                            </lightning-button>
+                </div>
+                </div>
+                </div>
+        </template>
+                    </li>
+                </template>
+
+            </ul>
+        </template>
+    </lightning-card>
+</template>

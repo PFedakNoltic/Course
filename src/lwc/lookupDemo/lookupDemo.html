@@ -1,0 +1,39 @@
+<template>
+    <article class="slds-card" style="padding: 10px">
+        <!--Custom Lookup without Pre-Populate Value for account Object-->
+        <c-departure-search
+                s-object-api-name="Flight_Info__c"
+                field-api-name="Departure__c"
+                search-key={departureBuff}
+                label="From"
+                onlookupupdate={lookupRecord}
+                placeholder="Search Departure here..."></c-departure-search>
+
+        <c-departure-search
+                s-object-api-name="Flight_Info__c"
+                field-api-name="Destination__c"
+                search-key={departureBuff}
+                label="To"
+                onlookupupdate={lookupRecord}
+                placeholder="Search Destination here..."></c-departure-search>
+        <div class="slds-card" style="padding: 10px">
+            <lightning-button label='Search' variant="brand" onclick={showTickets} disabled={disabled}
+            ></lightning-button>
+        </div>
+    </article>
+
+    <template if:true={isTwoKeys}>
+        <c-ticket-tiles
+                record-id={recordId}
+                flight-info-id={selectedRecordIdForTicket}
+        ></c-ticket-tiles>
+    </template>
+    <!--Custom Lookup without Pre-Populate Value for account Object-->
+    <!--        <c-destination-and-departure-search-->
+    <!--                             s-object-api-name="Flight_Info__c"-->
+    <!--                             label="To"-->
+    <!--                             search-key={departureBuff}-->
+    <!--                             onlookupupdate={lookupRecord}-->
+    <!--                             placeholder="Search Destination here..."></c-destination-and-departure-search>-->
+
+</template>

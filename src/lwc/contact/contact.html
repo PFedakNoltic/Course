@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-p-bottom_medium">
+        <a href="#" onclick={selectHandler}>
+            <p><b>Name:</b> {contactItem.Name}</p>
+            <template if:true={contactItem.Company__c}>
+                <p><b>Company__c:</b> {contactItem.Company__c}</p>
+            </template>
+            <p><b>Phone:</b> {contactItem.Phone}</p>
+            <template if:true={contactItem.Title}>
+                <p><b>Title:</b> {contactItem.Title}</p>
+            </template>
+        </a>
+    </div>
+</template>

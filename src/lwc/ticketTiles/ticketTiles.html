@@ -1,0 +1,17 @@
+<template>
+    <table>
+        <tr>
+        <template for:each={options} for:item="obj">
+                <td key={obj.label}>
+                    <c-ticket-tile
+                            record-id={recordId}
+                            flight-id={flightInfoId}
+                            ticket-type-id={obj.value}
+                            put-picture={obj.label}
+                            put-price-with-discount= {obj.label}
+                    ></c-ticket-tile>
+                </td>
+        </template>
+        </tr>
+    </table>
+</template>

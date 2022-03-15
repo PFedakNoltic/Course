@@ -1,0 +1,19 @@
+<template>
+        <lightning-card title={ticketTypeName}>
+
+            <div style="margin: 5px">
+            <b>Course: </b> {selectFlight.Departure__c} - {selectFlight.Destination__c} </br>
+            <b>Date: </b>
+            <lightning-formatted-date-time value={selectFlight.Date_time_of_Flight__c}></lightning-formatted-date-time>
+            -
+            <lightning-formatted-date-time value={selectFlight.Finish_flight_time__c}></lightning-formatted-date-time>
+            </br>
+            <b>Price: </b> {putPriceWithDiscount}$<br>
+            <div><img src={putPicture} style="margin: 5px" alt="" width="300" height="360"></div>
+            <div>
+                <lightning-button label='Buy' variant="brand" onclick={buyTicketInTile}
+                ></lightning-button>
+            </div>
+            </div>
+        </lightning-card>
+</template>

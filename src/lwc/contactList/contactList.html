@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Information from child to Parent" icon-name="action:new_contact">
+        <div class="slds-m-around_medium">
+            <template if:true={selectedContact}>
+                <div class="slds-p-bottom_large">You clicked on <b>{selectedContact}</b> contact</div>
+            </template>
+            <template for:each={contacts} for:item="contact">
+                <c-contact contact-item={contact} key={contact.Id} onselected={contactSelected}></c-contact>
+            </template>
+        </div>
+    </lightning-card>
+</template>
